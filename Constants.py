@@ -10,3 +10,7 @@ GRADIENT_ACCUMULATION_STEPS = 8
 WARMUP_STEPS = 3
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(DEVICE)
+
+NUM_CLS = 7
+CKPT_SAVE_PATH="./models/AllDataCkpts/"
+PRETRAINED_MODEL_PATH= "./models/bert-base-cased"
