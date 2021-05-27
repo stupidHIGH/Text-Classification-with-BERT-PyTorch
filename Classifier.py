@@ -17,14 +17,17 @@ config = BertConfig(hidden_size=768,
                     num_hidden_layers=12,
                     num_attention_heads=12,
                     intermediate_size=3072,
-                    num_labels=2)
+                    num_labels=NUM_CLS,
+                    do_lower_case=False
+                   )
 
 # Create our custom BERTClassifier model object
-model = BertClassifier(config)
+model = BertClassifier(config,PRETRAINED_MODEL_PATH)
 model.to(DEVICE)
 
 # Initialize BERT tokenizer
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tokenizer = BertTokenizer.from_pretrained(PRETRAINED_MODEL_PATH,do_lower_case=False)
 
 # Load Train dataset and split it into Train and Validation dataset
 train_dataset = SequenceDataset(TRAIN_FILE_PATH, tokenizer)
